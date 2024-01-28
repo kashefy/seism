@@ -48,6 +48,7 @@ disp(['Total number of parameterizations: ' num2str(ii)])
 % delete(p);
 
 %% Run all experiments sequentially
+disp("Run experiments sequentially.")
 for nn=1:length(experiments)
     eval_method(experiments(nn).method,...
                 experiments(nn).parameter,...
