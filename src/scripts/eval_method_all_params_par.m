@@ -34,9 +34,9 @@ end
 disp(['Total number of parameterizations: ' num2str(ii)])
 
 %% Run using the parallel computing toolbox
-disp("Run experiments in parellel.")
+disp("Run experiments in parallel.")
 p = parpool;
-matlabpool open;
+parpool open;
 parfor nn=1:length(experiments)
      method_name = experiments(nn).method;
      parameter   = experiments(nn).parameter;
@@ -45,7 +45,7 @@ parfor nn=1:length(experiments)
      eval_method(method_name, parameter, measure, read_part_fun, database,  gt_set, length(params), segm_or_contour,cat_ids)
      disp(['Done:     ' method_name ' (' parameter ') for measure ' measure ' on ' gt_set])
 end
-matlabpool close;
+parpool close;
 delete(p);
 
 %% Run all experiments sequentially
